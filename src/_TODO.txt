@@ -1,0 +1,20 @@
+﻿TODO
+
+5. Test the package to ensure install/uninstall work appropriately.
+ There is a test environment you can use for this -
+ https://github.com/chocolatey/chocolatey-test-environment
+
+6. Learn more about Chocolatey packaging - go through the workshop at
+ https://github.com/chocolatey/chocolatey-workshop
+ You will learn about
+ - General packaging
+ - Customizing package behavior at runtime (package parameters)
+ - Extension packages
+ - Custom packaging templates
+ - Setting up an internal Chocolatey.Server repository
+ - Adding and using internal repositories
+ - Reporting
+ - Advanced packaging techniques when installers are not friendly to
+   automation
+
+7. Delete this file.
