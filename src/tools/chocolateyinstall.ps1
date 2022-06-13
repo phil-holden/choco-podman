@@ -10,7 +10,7 @@ $packageArgs = @{
   
   softwareName  = 'podman*'
 
-  checksum      = ''
+  checksum      = '#{CHECKSUM}#'
   checksumType  = 'sha256'
 
   silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
