@@ -21,7 +21,7 @@ jobs:
 
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: '["src/tools.chocolateyinstall.ps1"]'
+          files: '["src/tools/chocolateyinstall.ps1"]'
         env:
           CHECKSUM: "${{ env.checksum }}"
 
