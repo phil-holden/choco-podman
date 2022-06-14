@@ -25,6 +25,19 @@ jobs:
         env:
           CHECKSUM: "${{ env.checksum }}"
 
+      - name: choco install
+        run: |
+          if (-Not $env:ChocolateyInstall) {
+              Set-ExecutionPolicy Bypass -Scope Process -Force;
+              [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+              Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+              
+              refreshenv
+          }
+        env:
+          VERSION: "${{ env.version }}"
+        shell: pwsh
+
       - name: choco pack
         run: |
           choco pack --version $env:VERSION ./src/podman.nuspec
@@ -32,12 +45,17 @@ jobs:
           VERSION: "${{ env.version }}"
         shell: pwsh
 
-      - name: choco push
-        run: |
-          choco apikey --key $env:API_KEY --source "https://push.chocolatey.org/"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: choco-package
+          path: "*.nupkg"
 
-          choco push --source "https://push.chocolatey.org/" --version $env:VERSION
-        env:
-          API_KEY: ${{ secrets.CHOCO_API_KEY }}
-          VERSION: "${{ env.version }}"
-        shell: pwsh
+      # - name: choco push
+      #   run: |
+      #     choco apikey --key $env:API_KEY --source "https://push.chocolatey.org/"
+
+      #     choco push --source "https://push.chocolatey.org/" --version $env:VERSION
+      #   env:
+      #     API_KEY: ${{ secrets.CHOCO_API_KEY }}
+      #     VERSION: "${{ env.version }}"
+      #   shell: pwsh
