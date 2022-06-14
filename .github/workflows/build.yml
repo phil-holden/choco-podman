@@ -28,11 +28,11 @@ jobs:
       - name: choco install
         run: |
           if (-Not $env:ChocolateyInstall) {
-              # Set-ExecutionPolicy Bypass -Scope Process -Force;
-              [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-              Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-              
-              refreshenv
+              $scriptUrl = "https://chocolatey.org/install.ps1"
+
+              Invoke-WebRequest -Uri $scriptUrl -Outfile $PSScriptRoot/choco-install.ps1
+
+              . $PSScriptRoot/choco-install.ps1
           }
         env:
           VERSION: "${{ env.version }}"
