@@ -8,7 +8,7 @@
     <title>Podman for Windows</title>
     <authors>Podman Contributors</authors>
     <projectUrl>https://podman.io/</projectUrl>
-    <iconUrl>https://github.com/containers/podman/blob/main/logo/podman-logo-source.svg</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/phil-holden/choco-podman@latest/podman.png</iconUrl>
     <licenseUrl>https://github.com/containers/podman/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/containers/podman</projectSourceUrl>
