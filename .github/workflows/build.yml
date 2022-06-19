@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -21,7 +21,7 @@ jobs:
 
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: '["src/tools.chocolateyinstall.ps1"]'
+          files: '["src/tools/chocolateyinstall.ps1"]'
         env:
           CHECKSUM: "${{ env.checksum }}"
 
@@ -31,6 +31,11 @@ jobs:
         env:
           VERSION: "${{ env.version }}"
         shell: pwsh
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: choco-package
+          path: "*.nupkg"
 
       - name: choco push
         run: |
