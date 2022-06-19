@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = "https://github.com/containers/podman/releases/download/$env:ChocolateyPackageVersion/podman-$env:ChocolateyPackageVersion.msi"
+$url        = "https://github.com/containers/podman/releases/download/v$env:ChocolateyPackageVersion/podman-v$env:ChocolateyPackageVersion.msi"
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
